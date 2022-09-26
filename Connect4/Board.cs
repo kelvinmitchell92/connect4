@@ -3,12 +3,18 @@
 namespace connect4
 {
 
+  
+
     public class Board
     {
         public int[,] board = new int[6, 7];
         int count = 0;
         string winState = "Not Finished";
-
+        public string WinState //property
+        {
+            get { return winState; }
+            set { this.winState = value; }
+        }
         public Board()
         {
 
@@ -227,37 +233,42 @@ namespace connect4
         
         }
 
-        public void play(int k)
+        public Board play(int k,Board board)
         {
             checkWin();
+            
             if (winState == "Not Finished")
             {
                 if (k < 0 || k > 6)
                 {
                     Console.WriteLine("Not a Valid Column Please select column 0-6");
+                    return board;
                 }
-                if (board[0, k] != 0)
+                if (board.board[0, k] != 0)
                 {
                     Console.WriteLine("This Column is full");
+                    return board;
                 }
                 else
                 {
                     for (int i = 5; i > -1; i--)
                     {
-                        if (board[i, k] == 0)
+                        if (board.board[i, k] == 0)
                         {
 
                             if (count % 2 == 0)
                             {
-                                board[i, k] = 1;
+                                board.board[i, k] = 1;
                                 count++;
-                                return;
+                                board.checkWin();
+                                return board;
                             }
                             else
                             {
-                                board[i, k] = 2;
+                                board.board[i, k] = 2;
                                 count++;
-                                return;
+                                board.checkWin();
+                                return board;
                             }
                         }
                     }
@@ -265,7 +276,7 @@ namespace connect4
                 }
 
             }
-
+            return board;
         }
     }
 }

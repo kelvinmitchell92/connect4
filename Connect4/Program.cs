@@ -7,20 +7,56 @@ namespace connect4
        
         static void Main(string[] args)
         {
-            Board board1 = new Board();
-            board1.boardToString();
-            board1.play(1);
-            board1.play(0);
-            board1.play(3);
-            board1.play(2);
-            board1.play(5);
-            board1.play(4);
-            board1.play(0);
-            board1.play(6);
-            board1.build();
-            board1.boardToString();
+            Tree<Board> tree = new Tree<Board>();
+            tree.Root = new TreeNode<Board>();
+            tree.Root.Children = new List<TreeNode<Board>>();
 
-        }
+            tree.Root.Data = new Board();
+
+            for (int i = 0; i < 7; i++)
+            {
+
+                if (tree.Root.Data.board[5, i] == 0)
+                {
+                    Board board2 = new Board();
+                    TreeNode<Board> node = new TreeNode<Board>();
+                    node.Data = board2.play(i, board2);
+                    node.Parent = tree.Root;
+                    tree.Root.Children.Add(node);
+                }
+            }
+
+
+            tree.Root.Data.boardToString();
+
+            for (int i = 0; i < 7; i++)
+            {
+                tree.Root.Children[i].Data.boardToString();
+            }
+                /*for (int i = 0; i < 7; i++)
+                {
+
+                    if (tree.Root.Data.board[5, i] == 0)
+                    {
+                       Board board2 = new Board();
+                        TreeNode<Board> node = new TreeNode<Board>();
+                        node.Data = board2.play(i,board2);
+                        node.Parent = tree.Root;
+                        tree.Root.Children.Add(node);
+                    }
+                }
+
+                tree.Root.Data.boardToString();
+
+                foreach (TreeNode<Board> node in tree.Root.Children)
+                {
+                    node.Data.boardToString();
+                }
+         */
+
+
+
+            }
 
     }
 }
