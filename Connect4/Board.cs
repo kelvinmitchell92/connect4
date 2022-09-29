@@ -9,11 +9,16 @@ namespace connect4
     {
         public int[,] board = new int[6, 7];
         int count = 0;
-        string winState = "Not Finished";
-        public string WinState //property
+        string winner = "Not Finished";
+        public string Winner //property
         {
-            get { return winState; }
-            set { this.winState = value; }
+            get { return winner; }
+            set { this.winner = value; }
+        }
+        public int Count //property
+        {
+            get { return count; }
+            set { this.count = value; }
         }
         public Board()
         {
@@ -37,7 +42,7 @@ namespace connect4
 
             }
 
-            Console.WriteLine("Winner : " + winState);
+            Console.WriteLine("Winner : " + winner);
 
         }
 
@@ -58,11 +63,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -74,11 +79,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -90,11 +95,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -106,11 +111,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -121,11 +126,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -137,11 +142,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -153,11 +158,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -169,11 +174,11 @@ namespace connect4
                             {
                                 if (board[i, j] == 1)
                                 {
-                                    this.winState = "White";
+                                    this.winner = "White";
                                 }
                                 if (board[i, j] == 2)
                                 {
-                                    this.winState = "Black";
+                                    this.winner = "Black";
                                 }
 
                             }
@@ -183,9 +188,9 @@ namespace connect4
 
                 }
             }
-            if(count ==42 && winState=="Not Finished")
+            if(count ==42 && winner=="Not Finished")
             {
-                winState = "Draw";
+                winner = "Draw";
             }
         }
 
@@ -221,7 +226,7 @@ namespace connect4
                             }
 
                         }
-                        if(winState!="Not Finished")
+                        if(winner!="Not Finished")
                         {
                             return;
                         }
@@ -237,7 +242,7 @@ namespace connect4
         {
             checkWin();
             
-            if (winState == "Not Finished")
+            if (winner == "Not Finished")
             {
                 if (k < 0 || k > 6)
                 {

@@ -1,19 +1,34 @@
 ﻿using System;
+using System.Globalization;
+using System.Xml.Serialization;
 
 namespace connect4
 {
+   
+
     class Program
     {
-       
+    
         static void Main(string[] args)
         {
             Tree<Board> tree = new Tree<Board>();
             tree.Root = new TreeNode<Board>();
             tree.Root.Children = new List<TreeNode<Board>>();
-
+            
             tree.Root.Data = new Board();
+            tree.Root.Data = tree.Root.Data.play(1,tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(2, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(2, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(2, tree.Root.Data);
+            tree.Root.Data.boardToString();
+            Recursive recursive = new Recursive();
+            recursive.Recursion(tree.Root);
 
-            for (int i = 0; i < 7; i++)
+            tree.Root.Data.boardToString();
+
+            /*for (int i = 0; i < 7; i++)
             {
 
                 if (tree.Root.Data.board[5, i] == 0)
