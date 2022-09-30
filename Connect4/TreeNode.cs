@@ -10,11 +10,17 @@ namespace connect4
 		private Board data;
 		private TreeNode<Board> parent;
 		private List<TreeNode<Board>> children;
+		private string winState;
 
 		public Board Data //property
 		{
 			get { return data; }
 			set { this.data = value; }
+		}
+		public string WinState //property
+		{
+			get { return winState ; }
+			set { this.winState = value; }
 		}
 		public TreeNode<Board> Parent
 		{
