@@ -11,10 +11,19 @@ namespace connect4{
                 for (int i = 0; i < 7; i++)
                 {
 
-                    if (Root.Data.board[5, i] == 0)
+                    if (Root.Data.board[0, i] == 0)
                     {
                         Board board2 = new Board();
-                        board2 = Root.Data;
+                        for (int k = 0; k < 6; k++)
+                        {
+                            for (int j = 0; j < 7; j++)
+                            {
+                                board2.board[k, j] = Root.Data.board[k,j];
+                            }
+                        }
+                        board2.Count = Root.Data.Count;
+                        board2.Winner = Root.Data.Winner;
+                        
                         TreeNode<Board> child = new TreeNode<Board>();
                         child.Children = new List<TreeNode<Board>>();
                         child.Data = board2.play(i, board2);

@@ -16,12 +16,12 @@ namespace connect4
             tree.Root.Children = new List<TreeNode<Board>>();
 
             tree.Root.Data = new Board();
-           // tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
+            tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
             tree.Root.Data.boardToString();
             Console.WriteLine("Could Win:" + tree.Root.WinState);
             Recursive recursive = new Recursive();
@@ -32,7 +32,7 @@ namespace connect4
 
             for(int i = 0; i < 7; i++)
             {
-                tree.Root.Children[i].Data.boardToString();
+                tree.Root.Children[0].Children[i].Data.boardToString();
 
             }
             
