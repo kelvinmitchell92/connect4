@@ -49,7 +49,7 @@ namespace connect4
 		public Node(Board board)
 		{
 			data = board;
-			couldWin = board.WinState;
+			couldWin = board.Winner;
 			List<Node> children = new List<Node>();
 		}
 

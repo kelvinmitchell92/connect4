@@ -12,16 +12,18 @@ namespace connect4
 		private List<TreeNode<Board>> children;
 		private string winState;
 
-		public Board Data //property
+
+        public string WinState //property
+        {
+            get { return winState; }
+            set { this.winState = value; }
+        }
+        public Board Data //property
 		{
 			get { return data; }
 			set { this.data = value; }
 		}
-		public string WinState //property
-		{
-			get { return winState ; }
-			set { this.winState = value; }
-		}
+
 		public TreeNode<Board> Parent
 		{
 			get { return parent; }
@@ -32,7 +34,8 @@ namespace connect4
 			get { return children; }
 			set { children = value; }
 		}
-		public int GetHeight()
+
+    public int GetHeight()
 		{
 			int height = 1;
 			TreeNode<Board> current = this;
@@ -44,6 +47,7 @@ namespace connect4
 			}
 			return height;
 		}
+
 
 
 	}
