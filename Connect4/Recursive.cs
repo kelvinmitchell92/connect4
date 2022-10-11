@@ -1,32 +1,34 @@
 ﻿using System;
 
-namespace connect4{
-	public class Recursive
-	{
+namespace connect4
+{
+    public class Recursive
+    {
 
         public string Recursion(TreeNode<Board> Root)
         {
             if (Root.Data.Winner == "Not Finished")
             {
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < Root.Data.Length; i++)
                 {
 
                     if (Root.Data.board[0, i] == 0)
                     {
-                        Board board2 = new Board();
-                        for (int k = 0; k < 6; k++)
+                        Board board2 = new Board(Root.Data.Length,Root.Data.Height);
+                        for (int k = 0; k < Root.Data.Height; k++)
                         {
-                            for (int j = 0; j < 7; j++)
+                            for (int j = 0; j < Root.Data.Length; j++)
                             {
-                                board2.board[k, j] = Root.Data.board[k,j];
+                                board2.board[k, j] = Root.Data.board[k, j];
                             }
                         }
                         board2.Count = Root.Data.Count;
                         board2.Winner = Root.Data.Winner;
-                        
+
                         TreeNode<Board> child = new TreeNode<Board>();
                         child.Children = new List<TreeNode<Board>>();
                         child.Data = board2.play(i, board2);
+                        board2.boardToString();
                         child.Parent = Root;
                         Root.Children.Add(child);
                         if (child.Data.Winner == "Black" || child.Data.Winner == "White" || child.Data.Winner == "Draw")
@@ -83,7 +85,7 @@ namespace connect4{
 
 
         public Recursive()
-		{
-		}
-	}
+        {
+        }
+    }
 }

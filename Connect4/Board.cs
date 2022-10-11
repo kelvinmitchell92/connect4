@@ -7,13 +7,25 @@ namespace connect4
 
     public class Board
     {
-        public int[,] board = new int[6, 7];
+        public int[,] board;
         int count = 0;
+        int height;
+        int length;
         string winner = "Not Finished";
         public string Winner //property
         {
             get { return winner; }
             set { this.winner = value; }
+        }
+        public int Length //property
+        {
+            get { return length; }
+            set { this.length = value; }
+        }
+        public int Height //property
+        {
+            get { return height; }
+            set { this.height = value; }
         }
         public int Count //property
         {
@@ -22,6 +34,7 @@ namespace connect4
         }
         public Board()
         {
+            board = new int[6, 7];
 
             for (int i = 0; i < 6; i++)
             {
@@ -33,13 +46,37 @@ namespace connect4
 
         }
 
+        public Board(int length, int height)
+        {
+            this.Height = height;
+            this.Length = length;
+
+            board = new int[height, length];
+
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    board[i, j] = 0;
+                }
+            }
+
+        }
+
         public void boardToString()
         {
-            for (int i = 0; i < 6; i++)
-            {
-
-                Console.WriteLine(board[i, 0] + " " + board[i, 1] + " " + board[i, 2] + " " + board[i, 3] + " " + board[i, 4] + " " + board[i, 5] + " " + board[i, 6]);
-
+            for (int i = 0; i < this.Height; i++)
+            {                      
+                for (int j = 0; j < this.Length;j++) {
+                    if (j == this.Length - 1)
+                    {
+                        Console.Write(board[i, j] + "\n");
+                    }
+                    else
+                    {
+                        Console.Write(board[i, j] + " ");
+                    }
+                }
             }
 
             Console.WriteLine("Winner : " + winner);
@@ -50,14 +87,14 @@ namespace connect4
         void checkWin()
         {
 
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < this.Length; j++)
             {
 
-                for (int i = 5; i > -1; i--)
+                for (int i = this.Height-1; i > -1; i--)
                 {
                     if (board[i, j] > 0)
                     {
-                        if (j < 4)
+                        if (j < this.Length-4)
                         {
                             if (board[i, j] == board[i, j + 1] && board[i, j] == board[i, j + 2] && board[i, j] == board[i, j + 3])
                             {
@@ -89,7 +126,7 @@ namespace connect4
                             }
                         }
 
-                        if (i < 3)
+                        if (i < this.Height-4)
                         {
                             if (board[i, j] == board[i + 1, j] && board[i, j] == board[i + 2, j] && board[i, j] == board[i + 3, j])
                             {
@@ -120,7 +157,7 @@ namespace connect4
 
                             }
                         }
-                        if (j < 4 && i<3)
+                        if (j < this.Length - 4 && i<this.Height - 4)
                         {
                             if (board[i, j] == board[i+1, j + 1] && board[i, j] == board[i+2, j + 2] && board[i+3, j] == board[i, j + 3])
                             {
@@ -152,7 +189,7 @@ namespace connect4
                             }
                         }
 
-                        if (j>2 && i < 3)
+                        if (j>2 && i < this.height-4)
                         {
                             if (board[i, j] == board[i + 1, j-1] && board[i, j] == board[i + 2, j-2] && board[i, j] == board[i + 3, j-3])
                             {
@@ -168,7 +205,7 @@ namespace connect4
                             }
                         }
 
-                        if (j<4 && i > 3)
+                        if (j<this.Height-4 && i > 3)
                         {
                             if (board[i, j] == board[i - 1, j+1] && board[i, j] == board[i - 2, j+2] && board[i, j] == board[i - 3, j+3])
                             {
@@ -188,7 +225,7 @@ namespace connect4
 
                 }
             }
-            if(count ==42 && winner=="Not Finished")
+            if(count == this.length*this.height && winner=="Not Finished")
             {
                 winner = "Draw";
             }
@@ -244,7 +281,7 @@ namespace connect4
             
             if (winner == "Not Finished")
             {
-                if (k < 0 || k > 6)
+                if (k < 0 || k > this.Length)
                 {
                     Console.WriteLine("Not a Valid Column Please select column 0-6");
                     return board;
@@ -256,7 +293,7 @@ namespace connect4
                 }
                 else
                 {
-                    for (int i = 5; i > -1; i--)
+                    for (int i = this.Height-1; i > -1; i--)
                     {
                         if (board.board[i, k] == 0)
                         {
