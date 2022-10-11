@@ -11,6 +11,7 @@ namespace connect4
         int count = 0;
         int height;
         int length;
+        int winLength;
         string winner = "Not Finished";
         public string Winner //property
         {
@@ -21,6 +22,11 @@ namespace connect4
         {
             get { return length; }
             set { this.length = value; }
+        }
+        public int WinLength //property
+        {
+            get { return winLength; }
+            set { this.winLength = value; }
         }
         public int Height //property
         {
@@ -46,10 +52,11 @@ namespace connect4
 
         }
 
-        public Board(int length, int height)
+        public Board(int length, int height, int winLength)
         {
             this.Height = height;
             this.Length = length;
+            this.winLength = winLength; 
 
             board = new int[height, length];
 
@@ -86,7 +93,7 @@ namespace connect4
 
         void checkWin()
         {
-
+           
             for (int j = 0; j < this.Length; j++)
             {
 
@@ -94,9 +101,19 @@ namespace connect4
                 {
                     if (board[i, j] > 0)
                     {
-                        if (j < this.Length-4)
+                        
+                        if (j < this.Length-this.WinLength)
                         {
-                            if (board[i, j] == board[i, j + 1] && board[i, j] == board[i, j + 2] && board[i, j] == board[i, j + 3])
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++) {
+                            
+                                if (board[i,j] != board[i, j+k])
+                                {
+                                    check = false;
+                                }
+                            
+                            }
+                            if (check)
                             {
                                 if (board[i, j] == 1)
                                 {
@@ -110,9 +127,156 @@ namespace connect4
                             }
                         }
 
-                        if (j > 2)
+                        if (j > this.WinLength-2)
                         {
-                            if (board[i, j] == board[i, j - 1] && board[i, j] == board[i, j - 2] && board[i, j] == board[i, j - 3])
+                            bool check = true;
+                            for (int k = this.WinLength-1; k >-1; k--)
+                            {
+
+                                if (board[i, j] != board[i, j-k])
+                                {
+                                    check = false;
+                                }
+
+                            }
+                            if (check)
+                            {
+                                if (board[i, j] == 1)
+                                {
+                                    this.winner = "White";
+                                }
+                                if (board[i, j] == 2)
+                                {
+                                    this.winner = "Black";
+                                }
+
+                            }
+                            
+                        }
+
+                        if (i < this.Height-this.WinLength)
+                        {
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++)
+                            {
+
+                                if (board[i, j] != board[i+k, j])
+                                {
+                                    check = false;
+                                }
+
+                            }
+                            if (check)
+                            {
+                                if (board[i, j] == 1)
+                                {
+                                    this.winner = "White";
+                                }
+                                if (board[i, j] == 2)
+                                {
+                                    this.winner = "Black";
+                                }
+
+                            }
+                           
+                        }
+
+                        if (i > this.WinLength-1)
+                        {
+                            bool check = true;
+                            for (int k = this.WinLength-1; k > -1; k--)
+                            {
+
+                                if (board[i, j] != board[i-k, j])
+                                {
+                                    check = false;
+                                }
+
+                            }
+                            if (check)
+                            {
+                                if (board[i, j] == 1)
+                                {
+                                    this.winner = "White";
+                                }
+                                if (board[i, j] == 2)
+                                {
+                                    this.winner = "Black";
+                                }
+
+                            }
+             
+                        }
+                        if (j < this.Length - this.WinLength && i<this.Height - this.WinLength)
+                        {
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++)
+                            {
+                          
+
+                                    if (board[i, j] != board[i+k, j+k])
+                                    {
+                                        check = false;
+                                    }
+                                
+                            }
+                            if (check)
+                            {
+                                if (board[i, j] == 1)
+                                {
+                                    this.winner = "White";
+                                }
+                                if (board[i, j] == 2)
+                                {
+                                    this.winner = "Black";
+                                }
+
+                            }
+           
+                        }
+
+                        if (j > this.WinLength-2 && i>this.WinLength-2)
+                        {
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++)
+                            {
+
+
+                                if (board[i, j] != board[i - k, j - k])
+                                {
+                                    check = false;
+                                }
+
+                            }
+                            if (check)
+                            {
+                                if (board[i, j] == 1)
+                                {
+                                    this.winner = "White";
+                                }
+                                if (board[i, j] == 2)
+                                {
+                                    this.winner = "Black";
+                                }
+
+                            }
+                        
+                        }
+
+                        if (j>this.WinLength-2 && i < this.height-this.WinLength)
+                        {
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++)
+                            {
+
+
+                                if (board[i, j] != board[i + k, j - k])
+                                {
+                                    check = false;
+                                }
+
+                            }
+                            if (check)
                             {
                                 if (board[i, j] == 1)
                                 {
@@ -126,88 +290,20 @@ namespace connect4
                             }
                         }
 
-                        if (i < this.Height-4)
+                        if (j<this.Height-this.WinLength && i > this.WinLength-1)
                         {
-                            if (board[i, j] == board[i + 1, j] && board[i, j] == board[i + 2, j] && board[i, j] == board[i + 3, j])
+                            bool check = true;
+                            for (int k = 0; k < this.WinLength; k++)
                             {
-                                if (board[i, j] == 1)
+
+
+                                if (board[i, j] != board[i - k, j + k])
                                 {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
+                                    check = false;
                                 }
 
                             }
-                        }
-
-                        if (i > 3)
-                        {
-                            if (board[i, j] == board[i - 1, j] && board[i, j] == board[i - 2, j] && board[i, j] == board[i - 3, j])
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                        }
-                        if (j < this.Length - 4 && i<this.Height - 4)
-                        {
-                            if (board[i, j] == board[i+1, j + 1] && board[i, j] == board[i+2, j + 2] && board[i+3, j] == board[i, j + 3])
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                        }
-
-                        if (j > 2 && i>3)
-                        {
-                            if (board[i, j] == board[i-1, j - 1] && board[i, j] == board[i-2, j - 2] && board[i, j] == board[i-3, j - 3])
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                        }
-
-                        if (j>2 && i < this.height-4)
-                        {
-                            if (board[i, j] == board[i + 1, j-1] && board[i, j] == board[i + 2, j-2] && board[i, j] == board[i + 3, j-3])
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                        }
-
-                        if (j<this.Height-4 && i > 3)
-                        {
-                            if (board[i, j] == board[i - 1, j+1] && board[i, j] == board[i - 2, j+2] && board[i, j] == board[i - 3, j+3])
+                            if (check)
                             {
                                 if (board[i, j] == 1)
                                 {

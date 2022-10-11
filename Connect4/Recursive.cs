@@ -14,7 +14,7 @@ namespace connect4
 
                     if (Root.Data.board[0, i] == 0)
                     {
-                        Board board2 = new Board(Root.Data.Length,Root.Data.Height);
+                        Board board2 = new Board(Root.Data.Length,Root.Data.Height,Root.Data.WinLength);
                         for (int k = 0; k < Root.Data.Height; k++)
                         {
                             for (int j = 0; j < Root.Data.Length; j++)
