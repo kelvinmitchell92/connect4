@@ -102,7 +102,7 @@ namespace connect4
                     if (board[i, j] > 0)
                     {
                         
-                        if (j < this.Length-this.WinLength)
+                        if (j < this.Length-this.WinLength+1)
                         {
                             bool check = true;
                             for (int k = 0; k < this.WinLength; k++) {
@@ -154,7 +154,7 @@ namespace connect4
                             
                         }
 
-                        if (i < this.Height-this.WinLength)
+                        if (i < this.Height-this.WinLength+1)
                         {
                             bool check = true;
                             for (int k = 0; k < this.WinLength; k++)
@@ -207,7 +207,7 @@ namespace connect4
                             }
              
                         }
-                        if (j < this.Length - this.WinLength && i<this.Height - this.WinLength)
+                        if (j < this.Length - this.WinLength+1 && i<this.Height - this.WinLength+1)
                         {
                             bool check = true;
                             for (int k = 0; k < this.WinLength; k++)
@@ -263,7 +263,7 @@ namespace connect4
                         
                         }
 
-                        if (j>this.WinLength-2 && i < this.height-this.WinLength)
+                        if (j>this.WinLength-2 && i < this.Height-this.WinLength+1)
                         {
                             bool check = true;
                             for (int k = 0; k < this.WinLength; k++)
@@ -290,7 +290,7 @@ namespace connect4
                             }
                         }
 
-                        if (j<this.Height-this.WinLength && i > this.WinLength-1)
+                        if (j<this.Length-this.WinLength+1 && i > this.WinLength-1)
                         {
                             bool check = true;
                             for (int k = 0; k < this.WinLength; k++)
@@ -375,7 +375,7 @@ namespace connect4
         {
             checkWin();
             
-            if (winner == "Not Finished")
+            if (board.Winner == "Not Finished")
             {
                 if (k < 0 || k > this.Length)
                 {

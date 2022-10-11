@@ -28,6 +28,7 @@ namespace connect4
                         TreeNode<Board> child = new TreeNode<Board>();
                         child.Children = new List<TreeNode<Board>>();
                         child.Data = board2.play(i, board2);
+                        if(board2.Winner=="Black")
                         board2.boardToString();
                         child.Parent = Root;
                         Root.Children.Add(child);
@@ -51,7 +52,8 @@ namespace connect4
             string value = "";
             foreach (TreeNode<Board> child in root.Children)
             {
-                if (root.Data.Count % 2 > 0)
+        
+                if (child.Data.Count % 2 > 0)
                 {
                     value = "White";
                     if (child.WinState == "Black")
@@ -63,9 +65,9 @@ namespace connect4
                         value = "Draw";
                     }
 
-                    return value;
+                    
                 }
-                if (root.Data.Count % 2 == 0)
+                if (child.Data.Count % 2 == 0)
                 {
                     value = "Black";
                     if (child.WinState == "White")
@@ -77,7 +79,11 @@ namespace connect4
                         value = "Draw";
                     }
 
-                    return value;
+                   
+                }
+                if (child.WinState == "")
+                {
+                    return child.WinState = checkingMethod(child);
                 }
             }
             return value;

@@ -15,7 +15,7 @@ namespace connect4
             tree.Root = new TreeNode<Board>();
             tree.Root.Children = new List<TreeNode<Board>>();
 
-            tree.Root.Data = new Board(3,1,2);
+            tree.Root.Data = new Board(3,4,3);
            //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
             //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
             //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
