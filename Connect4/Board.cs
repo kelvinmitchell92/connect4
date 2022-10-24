@@ -91,289 +91,1070 @@ namespace connect4
         }
 
 
-        void checkWin()
+        void checkWin( string game)
         {
-           
-            for (int j = 0; j < this.Length; j++)
+            if (game=="normal")
             {
-
-                for (int i = this.Height-1; i > -1; i--)
+                for (int j = 0; j < this.Length; j++)
                 {
-                    if (board[i, j] > 0)
+
+                    for (int i = this.Height - 1; i > -1; i--)
                     {
-                        
-                        if (j < this.Length-this.WinLength+1)
+                        if (board[i, j] > 0)
                         {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++) {
-                            
-                                if (board[i,j] != board[i, j+k])
-                                {
-                                    check = false;
-                                }
-                            
-                            }
-                            if (check)
+
+                            if (j < this.Length - this.WinLength + 1)
                             {
-                                if (board[i, j] == 1)
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
 
-                            }
-                        }
-
-                        if (j > this.WinLength-2)
-                        {
-                            bool check = true;
-                            for (int k = this.WinLength-1; k >-1; k--)
-                            {
-
-                                if (board[i, j] != board[i, j-k])
-                                {
-                                    check = false;
-                                }
-
-                            }
-                            if (check)
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                            
-                        }
-
-                        if (i < this.Height-this.WinLength+1)
-                        {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++)
-                            {
-
-                                if (board[i, j] != board[i+k, j])
-                                {
-                                    check = false;
-                                }
-
-                            }
-                            if (check)
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-                           
-                        }
-
-                        if (i > this.WinLength-1)
-                        {
-                            bool check = true;
-                            for (int k = this.WinLength-1; k > -1; k--)
-                            {
-
-                                if (board[i, j] != board[i-k, j])
-                                {
-                                    check = false;
-                                }
-
-                            }
-                            if (check)
-                            {
-                                if (board[i, j] == 1)
-                                {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
-
-                            }
-             
-                        }
-                        if (j < this.Length - this.WinLength+1 && i<this.Height - this.WinLength+1)
-                        {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++)
-                            {
-                          
-
-                                    if (board[i, j] != board[i+k, j+k])
+                                    if (board[i, j] != board[i, j + k])
                                     {
                                         check = false;
                                     }
-                                
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
                             }
-                            if (check)
+
+                            if (j > this.WinLength - 2)
                             {
-                                if (board[i, j] == 1)
+                                bool check = true;
+                                for (int k = this.WinLength - 1; k > -1; k--)
                                 {
-                                    this.winner = "White";
+
+                                    if (board[i, j] != board[i, j - k])
+                                    {
+                                        check = false;
+                                    }
+
                                 }
-                                if (board[i, j] == 2)
+                                if (check)
                                 {
-                                    this.winner = "Black";
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
                                 }
 
                             }
-           
-                        }
 
-                        if (j > this.WinLength-2 && i>this.WinLength-2)
-                        {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++)
+                            if (i < this.Height - this.WinLength + 1)
                             {
-
-
-                                if (board[i, j] != board[i - k, j - k])
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    check = false;
+
+                                    if (board[i, j] != board[i + k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
                                 }
 
                             }
-                            if (check)
+
+                            if (i > this.WinLength - 1)
                             {
-                                if (board[i, j] == 1)
+                                bool check = true;
+                                for (int k = this.WinLength - 1; k > -1; k--)
                                 {
-                                    this.winner = "White";
+
+                                    if (board[i, j] != board[i - k, j])
+                                    {
+                                        check = false;
+                                    }
+
                                 }
-                                if (board[i, j] == 2)
+                                if (check)
                                 {
-                                    this.winner = "Black";
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
                                 }
 
                             }
-                        
-                        }
-
-                        if (j>this.WinLength-2 && i < this.Height-this.WinLength+1)
-                        {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++)
+                            if (j < this.Length - this.WinLength + 1 && i < this.Height - this.WinLength + 1)
                             {
-
-
-                                if (board[i, j] != board[i + k, j - k])
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    check = false;
+
+
+                                    if (board[i, j] != board[i + k, j + k])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
                                 }
 
                             }
-                            if (check)
+
+                            if (j > this.WinLength - 2 && i > this.WinLength - 2)
                             {
-                                if (board[i, j] == 1)
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    this.winner = "White";
+
+
+                                    if (board[i, j] != board[i - k, j - k])
+                                    {
+                                        check = false;
+                                    }
+
                                 }
-                                if (board[i, j] == 2)
+                                if (check)
                                 {
-                                    this.winner = "Black";
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
                                 }
 
                             }
-                        }
 
-                        if (j<this.Length-this.WinLength+1 && i > this.WinLength-1)
-                        {
-                            bool check = true;
-                            for (int k = 0; k < this.WinLength; k++)
+                            if (j > this.WinLength - 2 && i < this.Height - this.WinLength + 1)
                             {
-
-
-                                if (board[i, j] != board[i - k, j + k])
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    check = false;
-                                }
 
+
+                                    if (board[i, j] != board[i + k, j - k])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
                             }
-                            if (check)
+
+                            if (j < this.Length - this.WinLength + 1 && i > this.WinLength - 1)
                             {
-                                if (board[i, j] == 1)
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
                                 {
-                                    this.winner = "White";
-                                }
-                                if (board[i, j] == 2)
-                                {
-                                    this.winner = "Black";
-                                }
 
+
+                                    if (board[i, j] != board[i - k, j + k])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
                             }
+
                         }
 
                     }
-
                 }
+           
             }
-            if(count == this.length*this.height && winner=="Not Finished")
+            if (game == "snake")
+            {
+                for (int j = 0; j < this.Length; j++)
+                {
+
+                    for (int i = this.Height - 1; i > -1; i--)
+                    {
+                        if (board[i, j] > 0)
+                        {
+
+                            if (j < this.Length)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+                                        if (i == 0)
+                                        {
+                                            if (board[i, j] != board[this.Height - 1, l])
+                                            {
+                                                check = false;
+                                            }
+
+                                        }
+                                        else{
+                                            if (board[i, j] != board[i-1, l])
+                                            {
+                                                check = false;
+                                            }
+                                        }
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+
+
+                            if (i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+
+                                    if (board[i, j] != board[i + k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+                            if (i > this.WinLength - 1)
+                            {
+                                bool check = true;
+                                for (int k = this.WinLength - 1; k > -1; k--)
+                                {
+
+                                    if (board[i, j] != board[i - k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+                            if (i < this.Height-this.WinLength) 
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+                                        if (i-k <= 0)
+                                        {
+                                            if (board[i, j] != board[this.Height+(i-k), l])
+                                            {
+                                                check = false;
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (board[i, j] != board[i - k, l])
+                                            {
+                                                check = false;
+                                            }
+                                        }
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (i - k <= 0)
+                                        {
+                                            if (board[i, j] != board[this.Height - 1 + (i - k), j+k])
+                                            {
+                                                check = false;
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (board[i, j] != board[i - k, j+k])
+                                            {
+                                                check = false;
+                                            }
+                                        }
+                                    
+                                    }
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+
+                            }
+
+                            if (i > this.WinLength-1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+                                        if (i - k <= 0)
+                                        {
+                                            if (board[i, j] != board[this.Height - 1 + (i - k), l])
+                                            {
+                                                check = false;
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (board[i, j] != board[i - k, l])
+                                            {
+                                                check = false;
+                                            }
+                                        }
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (i - k <= 0)
+                                        {
+                                            if (board[i, j] != board[this.Height - 1 + (i - k), j + k])
+                                            {
+                                                check = false;
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if (board[i, j] != board[i - k, j + k])
+                                            {
+                                                check = false;
+                                            }
+                                        }
+
+                                    }
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+
+                            }
+
+
+
+                        }
+
+                    }
+                }
+
+
+            }
+
+            if(game == "cylinder")
+            {
+                for (int j = 0; j < this.Length; j++)
+                {
+
+                    for (int i = this.Height - 1; i > -1; i--)
+                    {
+                        if (board[i, j] > 0)
+                        {
+
+                            if (j < this.Length)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+
+                                        if (board[i, j] != board[i, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+
+
+                            if (i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+
+                                    if (board[i, j] != board[i + k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+                            if (i > this.WinLength - 1)
+                            {
+                                bool check = true;
+                                for (int k = this.WinLength - 1; k > -1; k--)
+                                {
+
+                                    if (board[i, j] != board[i - k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+                            if (j < this.Length && i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+
+                                        if (board[i, j] != board[i + k, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i + k, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+
+
+                            if (j > -1 && i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j - k < 0)
+                                    {
+                                        int l = j - k + this.Length;
+
+                                        if (board[i, j] != board[i, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j - k >= 0)
+                                    {
+                                        if (board[i, j] != board[i + k, j - k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+                            if (j < this.Length && i > this.WinLength - 2)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+
+                                        if (board[i, j] != board[i - k, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i - k, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+
+
+                            if (j > -1 && i > this.WinLength - 2)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j - k < 0)
+                                    {
+                                        int l = j - k + this.Length;
+
+                                        if (board[i, j] != board[i - k, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j - k >= 0)
+                                    {
+                                        if (board[i, j] != board[i - k, j - k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+
+
+                        }
+
+                    }
+                }
+
+            }
+
+            if (game == "warped")
+            {
+                for (int j = 0; j < this.Length; j++)
+                {
+
+                    for (int i = this.Height - 1; i > -1; i--)
+                    {
+                        if (board[i, j] > 0)
+                        {
+
+                            if (j < this.Length)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+
+                                        int t = this.Height - 1 - i;
+
+                                        if (board[i, j] != board[t, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+
+
+                            if (i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+
+                                    if (board[i, j] != board[i + k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+                            if (i > this.WinLength - 1)
+                            {
+                                bool check = true;
+                                for (int k = this.WinLength - 1; k > -1; k--)
+                                {
+
+                                    if (board[i, j] != board[i - k, j])
+                                    {
+                                        check = false;
+                                    }
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+                            if (j < this.Length && i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+
+                                        int t = this.Height - 1 - i;
+
+                                        if (board[i, j] != board[t, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i + k, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+
+
+                            if (j > -1 && i < this.Height - this.WinLength + 1)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j - k < 0)
+                                    {
+                                        int l = j - k + this.Length;
+                                        int t = this.Height - 1 - i;
+
+                                        if (board[i, j] != board[t, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j - k >= 0)
+                                    {
+                                        if (board[i, j] != board[i + k, j - k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+                            if (j < this.Length && i > this.WinLength - 2)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j + k >= this.Length)
+                                    {
+                                        int l = j + k - this.Length;
+                                        int t = this.Height - 1 - i;
+
+                                        if (board[i, j] != board[t, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j + k < this.Length)
+                                    {
+                                        if (board[i, j] != board[i - k, j + k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+
+                            }
+
+
+
+                            if (j > -1 && i > this.WinLength - 2)
+                            {
+                                bool check = true;
+                                for (int k = 0; k < this.WinLength; k++)
+                                {
+                                    if (j - k < 0)
+                                    {
+                                        int l = j - k + this.Length;
+                                        int t = this.Height - 1 - i;
+
+                                        if (board[i, j] != board[t, l])
+                                        {
+                                            check = false;
+                                        }
+
+
+                                    }
+                                    if (j - k >= 0)
+                                    {
+                                        if (board[i, j] != board[i - k, j - k])
+                                        {
+                                            check = false;
+                                        }
+                                    }
+
+
+
+                                }
+                                if (check)
+                                {
+                                    if (board[i, j] == 1)
+                                    {
+                                        this.winner = "White";
+                                    }
+                                    if (board[i, j] == 2)
+                                    {
+                                        this.winner = "Black";
+                                    }
+
+                                }
+                            }
+
+
+
+                        }
+
+                    }
+                }
+
+            }
+
+            if (count == this.length*this.height && winner=="Not Finished")
             {
                 winner = "Draw";
             }
         }
 
-        public void build()
-        {
+       
 
           
 
-            for (int j = 0; j < 7; j++)
-            {
-                if (board[0, j] == 0)
-                {
-
-
-                    for (int i = 5; i > -1; i--)
-                    {
-
-                        if (board[i, j] == 0)
-                        {
-
-                            if (count % 2 == 0)
-                            {
-                                board[i, j] = 1;
-                                count++;
-                                checkWin();
-
-                            }
-                            else
-                            {
-                                board[i, j] = 2;
-                                count++;
-                                checkWin();
-                            }
-
-                        }
-                        if(winner!="Not Finished")
-                        {
-                            return;
-                        }
-
-                    }
-                }
-            } 
-            
         
-        }
 
-        public Board play(int k,Board board)
+        public Board play(int k,Board board,string game)
         {
-            checkWin();
+            checkWin(game);
             
             if (board.Winner == "Not Finished")
             {
@@ -398,14 +1179,14 @@ namespace connect4
                             {
                                 board.board[i, k] = 1;
                                 count++;
-                                board.checkWin();
+                                board.checkWin(game);
                                 return board;
                             }
                             else
                             {
                                 board.board[i, k] = 2;
                                 count++;
-                                board.checkWin();
+                                board.checkWin(game);
                                 return board;
                             }
                         }

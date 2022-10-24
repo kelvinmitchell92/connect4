@@ -11,17 +11,13 @@ namespace connect4
 
         static void Main(string[] args)
         {
-            Tree<Board> tree = new Tree<Board>();
+
+            /*Tree<Board> tree = new Tree<Board>();
             tree.Root = new TreeNode<Board>();
             tree.Root.Children = new List<TreeNode<Board>>();
 
-            tree.Root.Data = new Board(3,4,3);
-           //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(0, tree.Root.Data);
-            //tree.Root.Data = tree.Root.Data.play(1, tree.Root.Data);
+            tree.Root.Data = new Board(4,2,3);
+  
             tree.Root.Data.boardToString();
             Console.WriteLine("Could Win:" + tree.Root.WinState);
             Recursive recursive = new Recursive();
@@ -29,53 +25,28 @@ namespace connect4
 
             tree.Root.Data.boardToString();
             Console.WriteLine("Could Win:" + recursive.Recursion(tree.Root));
+            */
+
+            Board board = new Board(4,4,3);
+           
+            board.play(2, board,"snake");
+            board.play(3, board,"snake");
+            board.play(2, board,"snake");
+            board.play(1, board,"snake");
+            board.play(3, board,"snake");
+            board.play(0, board,"snake");
+            board.play(0, board,"snake");
+            board.play(1, board, "snake");
+            board.play(0, board, "snake");
 
 
 
-                /*for (int i = 0; i < 7; i++)
-                {
-
-                    if (tree.Root.Data.board[5, i] == 0)
-                    {
-                        Board board2 = new Board();
-                        TreeNode<Board> node = new TreeNode<Board>();
-                        node.Data = board2.play(i, board2);
-                        node.Parent = tree.Root;
-                        tree.Root.Children.Add(node);
-                    }
-                }
 
 
-                tree.Root.Data.boardToString();
+            board.boardToString();
+            
 
-                for (int i = 0; i < 7; i++)
-                {
-                    tree.Root.Children[i].Data.boardToString();
-                }
-                    /*for (int i = 0; i < 7; i++)
-                    {
-
-                        if (tree.Root.Data.board[5, i] == 0)
-                        {
-                           Board board2 = new Board();
-                            TreeNode<Board> node = new TreeNode<Board>();
-                            node.Data = board2.play(i,board2);
-                            node.Parent = tree.Root;
-                            tree.Root.Children.Add(node);
-                        }
-                    }
-
-                    tree.Root.Data.boardToString();
-
-                    foreach (TreeNode<Board> node in tree.Root.Children)
-                    {
-                        node.Data.boardToString();
-                    }
-             */
-
-
-
-            }
+        }
 
         }
     }
