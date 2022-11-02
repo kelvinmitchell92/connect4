@@ -30,7 +30,7 @@ namespace connect4
 
                         TreeNode<Board> child = new TreeNode<Board>();
                         child.Children = new List<TreeNode<Board>>();
-                        child.Data = board2.play(i, board2,"warped");
+                        child.Data = board2.play(i, board2);
                         child.Parent = Root;
                         Root.Children.Add(child);
                         /*foreach( TreeNode<Board> node in dynamic) 
@@ -69,9 +69,9 @@ namespace connect4
                                 return child.WinState = child.Data.Winner;
 
                             }
-                        }
+                        } 
 
-                        if (board2.Count == 1)
+                        if (board2.Count == 0)
                         {
                             board2.boardToString();
                         } 
@@ -89,8 +89,7 @@ namespace connect4
                     }
                 }
             }
-            if (Root.Data.Count == 1)
-                Console.WriteLine(checkingMethod(Root));
+
             return Root.WinState = checkingMethod(Root);
         }
 

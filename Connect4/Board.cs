@@ -3,7 +3,7 @@
 namespace connect4
 {
 
-  
+
 
     public class Board
     {
@@ -56,7 +56,7 @@ namespace connect4
         {
             this.Height = height;
             this.Length = length;
-            this.winLength = winLength; 
+            this.winLength = winLength;
 
             board = new int[height, length];
 
@@ -73,8 +73,9 @@ namespace connect4
         public void boardToString()
         {
             for (int i = 0; i < this.Height; i++)
-            {                      
-                for (int j = 0; j < this.Length;j++) {
+            {
+                for (int j = 0; j < this.Length; j++)
+                {
                     if (j == this.Length - 1)
                     {
                         Console.Write(board[i, j] + "\n");
@@ -91,9 +92,9 @@ namespace connect4
         }
 
 
-        void checkWin( string game)
+        void checkWin(string game)
         {
-            if (game=="normal")
+            if (game == "normal")
             {
                 for (int j = 0; j < this.Length; j++)
                 {
@@ -323,7 +324,7 @@ namespace connect4
 
                     }
                 }
-           
+
             }
             if (game == "snake")
             {
@@ -351,8 +352,9 @@ namespace connect4
                                             }
 
                                         }
-                                        else{
-                                            if (board[i, j] != board[i-1, l])
+                                        else
+                                        {
+                                            if (board[i, j] != board[i - 1, l])
                                             {
                                                 check = false;
                                             }
@@ -437,129 +439,7 @@ namespace connect4
 
                             }
 
-                            if (i < this.Height-this.WinLength) 
-                            {
-                                bool check = true;
-                                for (int k = 0; k < this.WinLength; k++)
-                                {
-                                    if (j + k >= this.Length)
-                                    {
-                                        int l = j + k - this.Length;
-                                        if (i-k <= 0)
-                                        {
-                                            if (board[i, j] != board[this.Height+(i-k), l])
-                                            {
-                                                check = false;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            if (board[i, j] != board[i - k, l])
-                                            {
-                                                check = false;
-                                            }
-                                        }
-
-                                    }
-                                    if (j + k < this.Length)
-                                    {
-                                        if (i - k <= 0)
-                                        {
-                                            if (board[i, j] != board[this.Height - 1 + (i - k), j+k])
-                                            {
-                                                check = false;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            if (board[i, j] != board[i - k, j+k])
-                                            {
-                                                check = false;
-                                            }
-                                        }
-                                    
-                                    }
-                                }
-                                if (check)
-                                {
-                                    if (board[i, j] == 1)
-                                    {
-                                        this.winner = "White";
-                                    }
-                                    if (board[i, j] == 2)
-                                    {
-                                        this.winner = "Black";
-                                    }
-
-                                }
-
-
-                            }
-
-                            if (i > this.WinLength-1)
-                            {
-                                bool check = true;
-                                for (int k = 0; k < this.WinLength; k++)
-                                {
-                                    if (j + k >= this.Length)
-                                    {
-                                        int l = j + k - this.Length;
-                                        if (i - k <= 0)
-                                        {
-                                            if (board[i, j] != board[this.Height - 1 + (i - k), l])
-                                            {
-                                                check = false;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            if (board[i, j] != board[i - k, l])
-                                            {
-                                                check = false;
-                                            }
-                                        }
-
-                                    }
-                                    if (j + k < this.Length)
-                                    {
-                                        if (i - k <= 0)
-                                        {
-                                            if (board[i, j] != board[this.Height - 1 + (i - k), j + k])
-                                            {
-                                                check = false;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            if (board[i, j] != board[i - k, j + k])
-                                            {
-                                                check = false;
-                                            }
-                                        }
-
-                                    }
-                                }
-                                if (check)
-                                {
-                                    if (board[i, j] == 1)
-                                    {
-                                        this.winner = "White";
-                                    }
-                                    if (board[i, j] == 2)
-                                    {
-                                        this.winner = "Black";
-                                    }
-
-                                }
-
-
-                            }
-
-
+                            
 
                         }
 
@@ -569,7 +449,7 @@ namespace connect4
 
             }
 
-            if(game == "cylinder")
+            if (game == "cylinder")
             {
                 for (int j = 0; j < this.Length; j++)
                 {
@@ -587,7 +467,10 @@ namespace connect4
                                     if (j + k >= this.Length)
                                     {
                                         int l = j + k - this.Length;
-
+                                        while(l >= this.length)
+                                        {
+                                            l=l-this.Length;
+                                        }
                                         if (board[i, j] != board[i, l])
                                         {
                                             check = false;
@@ -765,7 +648,10 @@ namespace connect4
                                     if (j + k >= this.Length)
                                     {
                                         int l = j + k - this.Length;
-
+                                        while (l >= this.length)
+                                        {
+                                            l = l - this.Length;
+                                        }
                                         if (board[i, j] != board[i - k, l])
                                         {
                                             check = false;
@@ -809,8 +695,17 @@ namespace connect4
                                     if (j - k < 0)
                                     {
                                         int l = j - k + this.Length;
+                                        while (l < 0 )
+                                        {
+                                            l = l + this.Length;
+                                        }
+                                        int m = i - k;
+                                        while (m < 0)
+                                        {
+                                            m = m+this.Length;
+                                        }
 
-                                        if (board[i, j] != board[i - k, l])
+                                        if (board[i, j] != board[m, l])
                                         {
                                             check = false;
                                         }
@@ -869,6 +764,12 @@ namespace connect4
                                     if (j + k >= this.Length)
                                     {
                                         int l = j + k - this.Length;
+
+                                        while(l >= this.Length){
+
+                                            l = l - this.Length;
+
+                                        }
 
                                         int t = this.Height - 1 - i;
 
@@ -964,6 +865,10 @@ namespace connect4
                                     if (j + k >= this.Length)
                                     {
                                         int l = j + k - this.Length;
+                                        while (l >= this.length)
+                                        {
+                                            l = l - this.Length;
+                                        }
 
                                         int t = this.Height - 1 - i;
 
@@ -1010,6 +915,10 @@ namespace connect4
                                     if (j - k < 0)
                                     {
                                         int l = j - k + this.Length;
+                                        while (l < 0)
+                                        {
+                                            l = l + this.Length;
+                                        }
                                         int t = this.Height - 1 - i;
 
                                         if (board[i, j] != board[t, l])
@@ -1052,6 +961,10 @@ namespace connect4
                                     if (j + k >= this.Length)
                                     {
                                         int l = j + k - this.Length;
+                                        while (l >= this.length)
+                                        {
+                                            l = l - this.Length;
+                                        }
                                         int t = this.Height - 1 - i;
 
                                         if (board[i, j] != board[t, l])
@@ -1097,6 +1010,10 @@ namespace connect4
                                     if (j - k < 0)
                                     {
                                         int l = j - k + this.Length;
+                                        while (l < 0)
+                                        {
+                                            l = l + this.Length;
+                                        }
                                         int t = this.Height - 1 - i;
 
                                         if (board[i, j] != board[t, l])
@@ -1140,22 +1057,23 @@ namespace connect4
 
             }
 
-            if (count == this.length*this.height && winner=="Not Finished")
+            if (count == this.length * this.height && winner == "Not Finished")
             {
                 winner = "Draw";
             }
         }
 
-       
 
-          
 
-        
 
-        public Board play(int k,Board board,string game)
+
+
+
+
+        public Board play(int k, Board board, string game)
         {
             checkWin(game);
-            
+
             if (board.Winner == "Not Finished")
             {
                 if (k < 0 || k > this.Length)
@@ -1170,7 +1088,7 @@ namespace connect4
                 }
                 else
                 {
-                    for (int i = this.Height-1; i > -1; i--)
+                    for (int i = this.Height - 1; i > -1; i--)
                     {
                         if (board.board[i, k] == 0)
                         {
@@ -1196,6 +1114,11 @@ namespace connect4
 
             }
             return board;
+        }
+
+        public Board play(int k, Board board)
+        {
+            return play(k, board, "normal");
         }
     }
 }
